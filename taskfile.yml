@@ -1,0 +1,14 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - docker run --rm --platform linux/amd64 -v "$(pwd):/data" --user $(id -u):$(id -g) pandoc/extra ./basic_example/*.md -o basic_example.pdf --template eisvogel --listings -M date="`date "+%d %B %Y"`"
+    silent: true
+  docker-run-basic:
+    cmds:
+      - docker run --rm --platform linux/amd64 -v "$(pwd):/data" --user $(id -u):$(id -g) pandoc/extra ./basic_example/*.md -o basic_example.pdf --template eisvogel --listings -M date="`date "+%d %B %Y"`"
+    silent: true
+
